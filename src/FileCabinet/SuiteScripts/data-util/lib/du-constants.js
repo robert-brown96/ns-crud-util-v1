@@ -5,7 +5,7 @@ define([], () => {
     let exports = {};
 
     exports.PROCESS_RECORD = {
-        id: "",
+        id: "customrecord_scgdu_p_job",
         fields: {
             STATUS: "",
             IN_FILE: "",
