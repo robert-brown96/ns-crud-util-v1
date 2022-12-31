@@ -23,13 +23,13 @@ define([], () => {
     };
 
     exports.PROCESS_STATUS = {
-        NEW: "new",
-        SETUP: "setup",
-        PROCESSING: "processing",
-        PROCESSED: "processed",
-        SUCCESS: "success",
-        ERRORS: "errors",
-        FAILURE: "failure"
+        NEW: 1,
+        SETUP: 2,
+        PROCESSING: 3,
+        PROCESSED: 4,
+        SUCCESS: 5,
+        ERRORS: 6,
+        FAILURE: 7
     };
     return exports;
 });

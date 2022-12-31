@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_scgdu_action_type">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Action Type</name>
+  <customvalues>
+    <customvalue scriptid="val_scgdu_action_type_create">
+      <isinactive>F</isinactive>
+      <value>CREATE</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_action_type_read">
+      <isinactive>F</isinactive>
+      <value>READ</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_action_type_update">
+      <isinactive>F</isinactive>
+      <value>UPDATE</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_action_type_delete">
+      <isinactive>F</isinactive>
+      <value>DELETE</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_action_type_upsert">
+      <isinactive>F</isinactive>
+      <value>UPSERT</value>
+    </customvalue>
+  </customvalues>
+</customlist>

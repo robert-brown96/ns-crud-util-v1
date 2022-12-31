@@ -1,0 +1,36 @@
+<customlist scriptid="customlist_scgdu_process_status">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Process Status</name>
+  <customvalues>
+    <customvalue scriptid="val_scgdu_process_status_new">
+      <isinactive>F</isinactive>
+      <value>NEW</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_process_status_mapping">
+      <isinactive>F</isinactive>
+      <value>MAPPING</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_process_status_processing">
+      <isinactive>F</isinactive>
+      <value>PROCESSING</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_process_status_processed">
+      <isinactive>F</isinactive>
+      <value>PROCESSED</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_process_status_success">
+      <isinactive>F</isinactive>
+      <value>SUCCESS</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_process_status_errors">
+      <isinactive>F</isinactive>
+      <value>ERRORS</value>
+    </customvalue>
+    <customvalue scriptid="val_scgdu_process_status_failure">
+      <isinactive>F</isinactive>
+      <value>FAILURE</value>
+    </customvalue>
+  </customvalues>
+</customlist>
