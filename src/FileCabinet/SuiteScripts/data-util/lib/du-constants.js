@@ -24,7 +24,7 @@ define([], () => {
 
     exports.PROCESS_STATUS = {
         NEW: "new",
-        MAPPING: "mapping",
+        SETUP: "setup",
         PROCESSING: "processing",
         PROCESSED: "processed",
         SUCCESS: "success",
