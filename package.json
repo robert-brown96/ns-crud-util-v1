@@ -21,6 +21,6 @@
         "semi": true,
         "singleQuote": false,
         "bracketSpacing": true,
-        "arrowParens": "avoid"
+        "arrowParens": "always"
     }
 }
