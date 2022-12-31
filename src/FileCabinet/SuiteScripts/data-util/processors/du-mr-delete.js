@@ -2,7 +2,20 @@
  * @NApiVersion 2.1
  * @NScriptType MapReduceScript
  */
-define(["N/record", "N/runtime", "N/search"], (record, runtime, search) => {
+define(["N/record", "N/runtime", "N/search", "../lib/du-lib-module"], (
+    record,
+    runtime,
+    search,
+    lib
+) => {
+    /**
+     * @typedef DelInput
+     *
+     * @property {String} recType
+     * @property {Number} recId
+     *
+     */
+
     /**
      * Defines the function that is executed at the beginning of the map/reduce process and generates the input data.
      * @param {Object} inputContext
@@ -18,19 +31,46 @@ define(["N/record", "N/runtime", "N/search"], (record, runtime, search) => {
 
     const getInputData = (inputContext) => {
         try {
+            /**
+             *
+             * @type {DelInput[]}
+             */
+            let recs = [];
             // get script obj
             const scrip = runtime.getCurrentScript();
 
             // check if search override is present
             const searchParam = scrip.getParameter({
-                name: "custscript_input_rec"
+                name: "custscript_scgdu_s_override"
             });
 
-            if (searchParam) return search.load({ id: searchParam });
+            if (searchParam) {
+                const searchObj = search.load({ id: searchParam });
+
+                const pagedResData = searchObj.runPaged();
+
+                pagedResData.pageRanges.forEach((pageRange) => {
+                    const myPage = pagedResData.fetch({
+                        index: pageRange.index
+                    });
+                    myPage.data.forEach((res) => {
+                        const recId = res.id;
+                        const recType = res.type;
+
+                        recs.push({
+                            recType,
+                            recId
+                        });
+                    });
+                });
+
+                // return the processed search
+                return recs;
+            }
 
             // get prop
             const inputRec = scrip.getParameter({
-                name: "custscript_input_rec"
+                name: "custscript_scgdu_del_input"
             });
         } catch (e) {
             log.error({
@@ -59,7 +99,24 @@ define(["N/record", "N/runtime", "N/search"], (record, runtime, search) => {
 
     const map = (context) => {
         try {
+            let recType;
+            let recId;
             log.debug({ title: "START MAP", details: context });
+
+            // extract id and type
+            /**
+             *
+             * @type {DelInput}
+             */
+            const delVal = JSON.parse(context.value);
+
+            log.debug({
+                title: `delete type: ${delVal.recType}`,
+                details: delVal.recId
+            });
+
+            if (recType && recId)
+                context.write({ key: JSON.stringify({ recType, recId }) });
         } catch (e) {
             log.error({
                 title: "map: ERROR",
@@ -86,11 +143,33 @@ define(["N/record", "N/runtime", "N/search"], (record, runtime, search) => {
     const reduce = (context) => {
         try {
             log.debug({ title: "START REDUCE", details: context });
+
+            /**
+             *
+             * @type {DelInput}
+             */
+            const parsedKey = JSON.parse(context.key);
+            const { recType, recId } = parsedKey;
+            const delRes = lib.deleteRecord({ recType, recId });
+
+            if (delRes.success)
+                context.write({
+                    key: JSON.stringify(parsedKey),
+                    value: ""
+                });
+            else {
+                context.write({
+                    key: JSON.stringify(parsedKey),
+                    value: delRes.err
+                });
+                if (delRes.err) throw delRes.err;
+            }
         } catch (e) {
             log.error({
-                title: "reduce: ERRPR",
+                title: "reduce: ERROR",
                 details: e
             });
+            throw e;
         }
     };
 

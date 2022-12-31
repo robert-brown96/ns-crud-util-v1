@@ -6,10 +6,68 @@
   <notifyemails></notifyemails>
   <notifyowner>T</notifyowner>
   <scriptfile>[/SuiteScripts/data-util/processors/du-mr-delete.js]</scriptfile>
+  <scriptcustomfields>
+    <scriptcustomfield scriptid="custscript_scgdu_s_override">
+      <accesslevel>2</accesslevel>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description>Used in testing or for admins. Uses the parameter setting instead of waiting for Suitelet</description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <fieldtype>SELECT</fieldtype>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <label>Search Override</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-119</selectrecordtype>
+      <setting></setting>
+      <storevalue>F</storevalue>
+    </scriptcustomfield>
+    <scriptcustomfield scriptid="custscript_scgdu_del_input">
+      <accesslevel>2</accesslevel>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <fieldtype>SELECT</fieldtype>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <label>Input Record</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_scgdu_p_job]</selectrecordtype>
+      <setting></setting>
+      <storevalue>F</storevalue>
+    </scriptcustomfield>
+  </scriptcustomfields>
   <scriptdeployments>
     <scriptdeployment scriptid="customdeploy_scgdu_mr_delete2">
       <buffersize>1</buffersize>
       <concurrencylimit>2</concurrencylimit>
+      <custscript_scgdu_del_input></custscript_scgdu_del_input>
+      <custscript_scgdu_s_override></custscript_scgdu_s_override>
       <isdeployed>T</isdeployed>
       <loglevel>DEBUG</loglevel>
       <queueallstagesatonce>T</queueallstagesatonce>
@@ -28,6 +86,8 @@
     <scriptdeployment scriptid="customdeploy_scgdu_mr_delete3">
       <buffersize>1</buffersize>
       <concurrencylimit>2</concurrencylimit>
+      <custscript_scgdu_del_input></custscript_scgdu_del_input>
+      <custscript_scgdu_s_override></custscript_scgdu_s_override>
       <isdeployed>T</isdeployed>
       <loglevel>DEBUG</loglevel>
       <queueallstagesatonce>T</queueallstagesatonce>
@@ -46,6 +106,8 @@
     <scriptdeployment scriptid="customdeploy_scgdu_mr_delete">
       <buffersize>1</buffersize>
       <concurrencylimit>2</concurrencylimit>
+      <custscript_scgdu_del_input></custscript_scgdu_del_input>
+      <custscript_scgdu_s_override></custscript_scgdu_s_override>
       <isdeployed>T</isdeployed>
       <loglevel>DEBUG</loglevel>
       <queueallstagesatonce>T</queueallstagesatonce>
