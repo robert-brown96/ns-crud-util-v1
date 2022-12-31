@@ -13,9 +13,6 @@ define([], () => {
             const firstOpenQl = `SELECT
                                   p.id as id,
                                   p.periodname as label,
-                                  p.alllocked as locked,
-                                  p.closed as closed,
-                                  p.arlocked as arlock,
                                   p.startdate as startdate
                                 from
                                   accountingPeriod p
