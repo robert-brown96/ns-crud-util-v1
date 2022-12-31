@@ -2,7 +2,7 @@
  * @NApiVersion 2.1
  * @NScriptType MapReduceScript
  */
-define(["N/record", "N/runtime"], (record, runtime) => {
+define(["N/record", "N/runtime", "N/search"], (record, runtime, search) => {
     /**
      * Defines the function that is executed at the beginning of the map/reduce process and generates the input data.
      * @param {Object} inputContext
@@ -21,7 +21,14 @@ define(["N/record", "N/runtime"], (record, runtime) => {
             // get script obj
             const scrip = runtime.getCurrentScript();
 
-            //get prop
+            // check if search override is present
+            const searchParam = scrip.getParameter({
+                name: "custscript_input_rec"
+            });
+
+            if (searchParam) return search.load({ id: searchParam });
+
+            // get prop
             const inputRec = scrip.getParameter({
                 name: "custscript_input_rec"
             });

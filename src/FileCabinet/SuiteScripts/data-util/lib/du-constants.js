@@ -7,19 +7,22 @@ define([], () => {
     exports.PROCESS_RECORD = {
         id: "customrecord_scgdu_p_job",
         fields: {
-            STATUS: "",
-            IN_FILE: "",
-            OUT_FILE: "",
-            ACTION_TYPE: ""
+            STATUS: "custrecord_scgdu_p_job_status",
+            IN_FILE: "custrecord_scgdu_p_job_in_file",
+            OUT_FILE: "custrecord_scgdu_p_job_out_file",
+            ACTION_TYPE: "custrecord_scgdu_p_action_type",
+            SUBMIT_COUNT: "custrecord_scgdu_p_job_submitted",
+            ERROR_COUNT: "custrecord_scgdu_p_job_errored",
+            SUCCESS_COUNT: "custrecord_scgdu_p_job_count_success"
         }
     };
 
     exports.ACTION_TYPE = {
-        CREATE: "create",
-        READ: "read",
-        UPDATE: "update",
-        DELETE: "delete",
-        UPSERT: "upsert"
+        CREATE: 1,
+        READ: 2,
+        UPDATE: 3,
+        DELETE: 4,
+        UPSERT: 5
     };
 
     exports.PROCESS_STATUS = {
